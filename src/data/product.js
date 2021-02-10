@@ -1,4 +1,4 @@
-export const product = {
+export default {
     id: 102,
     title: 'Snowboard Boots X-L',
     description: 'Crazy extreme boots of snow & board.',

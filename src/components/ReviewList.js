@@ -1,21 +1,22 @@
-import { ReviewDetails } from './ReviewDetails'
+import React from 'react';
+import ReviewDetails from './ReviewDetails'
 
-export function ReviewList(props) {
-  const { reviews } = props
-
+const ReviewList = ({reviews, deleteReview})=> {
   return (
     <div>
-      {reviews.map((review) => {
-        let { rating, body, created_at, reviewer } = review
-        return (
-          <ReviewDetails
-            rating={rating}
-            body={body}
-            reviewerName={reviewer.full_name}
-            createdAt={created_at}
+      {reviews.map((review,i) => {
+        return <ReviewDetails
+          key={i}
+            rating={review.rating}
+            id={review.id}
+            body={review.body}
+            reviewerName={review.reviewer.full_name}
+            createdAt={review.created_at}
+            deleteReview={deleteReview}
           />
-        )
+        
       })}
     </div>
   )
 }
+export default ReviewList

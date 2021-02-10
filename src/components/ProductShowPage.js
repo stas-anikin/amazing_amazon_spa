@@ -1,12 +1,25 @@
-import { ProductDetails } from './ProductDetails'
-import { ReviewDetails } from './ReviewDetails'
-import { product } from '../data/product'
-import { ReviewList } from './ReviewList'
+import React, { Component } from 'react'
+import ProductDetails  from './ProductDetails'
+import product from '../data/product'
+import ReviewList  from './ReviewList'
 
-export default function ProductShowPage() {
-  let { title, description, created_at, seller, price, reviews } = product
+class ProductShowPage extends Component  {
+  constructor(props){
+super(props)
+this.state=product
+this.deleteReview=this.deleteReview.bind(this)
+  }
+  deleteReview(id){
+    this.setState((state)=>{
+      return {
+        reviews: state.reviews.filter(r=>r.id !==id)
+      }
+    })
+  }
+  render(){
+  const { title, description, created_at, seller, price, reviews } = this.state;
   return (
-    <>
+    <main>
       <ProductDetails
         title={title}
         description={description}
@@ -14,7 +27,10 @@ export default function ProductShowPage() {
         price={price}
         createdAt={created_at}
       />
-      <ReviewList reviews={reviews} />
-    </>
+      <ReviewList 
+      reviews={reviews}
+      deleteReview={this.deleteReview} />
+    </main>
   )
-}
+}}
+export default ProductShowPage

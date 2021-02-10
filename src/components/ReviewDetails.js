@@ -1,8 +1,7 @@
 import { StarRating } from './StarRating'
 
-export function ReviewDetails(props) {
+const ReviewDetails=({ rating, body, createdAt, id, reviewerName, deleteReview })=> {
   /** This way of destructuring props gives the same result as in Product Details */
-  let { rating, body, createdAt, reviewerName } = props
   return (
     <div>
       <h3 className='header'>
@@ -11,6 +10,8 @@ export function ReviewDetails(props) {
       <p>body: {body}</p>
       <p>Reviewed by: {reviewerName}</p>
       <p>createdAt: {createdAt}</p>{' '}
+      <button onClick={()=>deleteReview(id)}>Delete</button>
     </div>
   )
 }
+export default ReviewDetails

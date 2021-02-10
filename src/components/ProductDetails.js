@@ -1,11 +1,11 @@
-export function ProductDetails({
+const ProductDetails=({
     /** This way of destructuring props gives the same result as tin Review Details */
+    id,
     title,
     fullName,
     description,
     price,
-    createdAt,
-  }) {
+    createdAt  }) =>{
     return (
       <div>
         <h1 className='header'>Product: {title}</h1>
@@ -16,4 +16,4 @@ export function ProductDetails({
       </div>
     )
   }
-  
+  export default ProductDetails
